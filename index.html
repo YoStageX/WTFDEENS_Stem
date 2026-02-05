@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EmotionTunes</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="https://unpkg.com/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="logo">EmotionTunes</div>
+        <nav>
+          <button class="nav-item active">Home</button>
+          <button class="nav-item">Browse</button>
+          <button class="nav-item">Your Library</button>
+        </nav>
+        <div class="sidebar-card">
+          <p class="label">Current mood</p>
+          <p id="moodText" class="mood">—</p>
+          <p id="statusText" class="hint">Waiting for camera permission…</p>
+        </div>
+        <div class="sidebar-card">
+          <p class="label">Manual mood</p>
+          <select id="manualMood">
+            <option value="">Auto (camera)</option>
+            <option value="happy">Happy / Excited</option>
+            <option value="sad">Sad / Calm</option>
+            <option value="angry">Angry / Intense</option>
+            <option value="surprised">Surprised / Energetic</option>
+            <option value="neutral">Neutral / Focused</option>
+          </select>
+        </div>
+      </aside>
+
+      <main class="content">
+        <header class="hero">
+          <div>
+            <p class="eyebrow">Mood-aware music</p>
+            <h1>EmotionTunes blends your expressions with multilingual playlists.</h1>
+            <p class="subtitle">
+              Let the camera read your expression or pick a mood manually to preview Hindi, English,
+              Tamil, Malayalam, Telugu, Kannada, and Punjabi tracks.
+            </p>
+          </div>
+          <div class="hero-card">
+            <div class="video-wrap">
+              <video id="video" autoplay muted playsinline></video>
+              <canvas id="overlay"></canvas>
+            </div>
+            <p class="hint">
+              Powered by face-api.js locally in your browser. No frames are uploaded.
+            </p>
+          </div>
+        </header>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Now playing preview</h2>
+            <span class="pill">Live</span>
+          </div>
+          <div class="now-playing" id="nowPlaying">
+            <div>
+              <p class="now-title">Pick a mood to start</p>
+              <p class="now-meta">Language • Genre</p>
+            </div>
+            <audio id="audioPlayer" controls></audio>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Song previews by mood</h2>
+            <p class="hint">Tap any preview to play the track instantly.</p>
+          </div>
+          <div id="previewList" class="preview-grid"></div>
+        </section>
+
+        <section class="section languages">
+          <div>
+            <h3>Languages supported</h3>
+            <p>Hindi · English · Tamil · Malayalam · Telugu · Kannada · Punjabi</p>
+          </div>
+          <div class="tag-group">
+            <span class="tag">Happy</span>
+            <span class="tag">Sad</span>
+            <span class="tag">Angry</span>
+            <span class="tag">Surprised</span>
+            <span class="tag">Neutral</span>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
